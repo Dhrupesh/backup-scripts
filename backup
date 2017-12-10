@@ -60,6 +60,6 @@ if [ ! -e "$NFS_MOUNT/$HOST/log/rsync_client.log" ]; then
 fi
 
 
-rsync -a --delete --log-file=$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" $SSH_USER@$HOST:$INST_PATH/ $NFS_MOUNT/$HOST/$INSTANCE/root/
+rsync -a --delete --copy-unsafe-links --log-file=$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" $SSH_USER@$HOST:$INST_PATH/ $NFS_MOUNT/$HOST/$INSTANCE/root/
 check_exec_ok "root van $HOST, $INSTANCE gesynchroniseerd" "root van $HOST, $INSTANCE NIET gesynchroniseerd"
 echo "backup-job klaar!"
