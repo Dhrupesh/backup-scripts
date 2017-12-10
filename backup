@@ -27,6 +27,7 @@ then
             mkdir -p "$DB_BACKUPPATH_OUT"
         fi
         docker run -v $NFS_MOUNT:$CONTAINER_STORE --rm postgres:${PG_VERSION} pg_dump -b -FC -U postgres -h $HOST -p $PG_PORT -f $DB_BACKUPPATH_IN/$DB.dump $DB
+        echo "db-dump $DB succesvol"
         done
 fi
 if [ ! -e "$NFS_MOUNT/$BACKUPPATH/log" ]; then
@@ -46,3 +47,5 @@ fi
 
 
 rsync -a --delete --log-file=$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" $SSH_USER@$HOST:$INST_PATH/ $NFS_MOUNT/$HOST/$INSTANCE/root/
+echo "root van $HOST, $INSTANCE gesynchroniseerd"
+echo "backup-job klaar!"
