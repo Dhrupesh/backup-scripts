@@ -2,4 +2,4 @@
 Description=Run daily-backup.service every day
 
 [Timer]
-OnCalendar=*.*.* 00:15:00
+OnCalendar=*-*-* 00:15:00
