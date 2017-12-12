@@ -3,15 +3,35 @@
 NFS_MOUNT=/mnt/prod-NSM
 CONTAINER_STORE=/mnt/store
 
-FROMHOST=$1
-FROMINSTANCE=$2
-TOSERVER=$3
-DB=$4
-PG_PORT=$5
-PG_VERSION=$6
-SSH_USER=$7
-TOINSTANCE=$8
-FILESTORE_PATH=$9
+# FROMHOST=$1
+# FROMINSTANCE=$2
+# TOSERVER=$3
+# DB=$4
+# PG_PORT=$5
+# PG_VERSION=$6
+# SSH_USER=$7
+# TOINSTANCE=$8
+# FILESTORE_PATH=$9
+
+
+echo "Which Host is the Source?"
+read FROMHOST
+echo "Which Instance is the Source?"
+read FROMINSTANCE
+echo "Which Host is the Destination?"
+read TOSERVER
+echo "Which Database?"
+read DB
+echo "Which Port runs Postgres destination?"
+read PG_PORT
+echo "Which Postgres Version?"
+read PG_VERSION
+echo "Which ssh-user has destination?"
+read SSH_USER
+# echo "Which Host is the Source?"
+# read TOINSTANCE
+echo "What is the full path of the filestore (not incuding "filestore" at the end)?"
+read FILESTORE_PATH
 
 BACKUPPATH=$NFS_MOUNT/$FROMHOST/$FROMINSTANCE
 DB_BACKUPPATH_IN=$CONTAINER_STORE/$BACKUPPATH/db/$PG_VERSION
@@ -38,6 +58,12 @@ echo "filestore/$DB herstellen?"
 read B
 if [ $B = "y" ]
 then
-/usr/local/bin/rsync $FSOPTS ${SSH_USER}@${TOSERVER}:${TOINSTANCE}/filestore/
+echo "/usr/local/bin/rsync $FSOPTS ${SSH_USER}@${TOSERVER}:${TOINSTANCE}/filestore/"
+fi
+echo "GOED?"
+read C
+if [ $C = "y" ]
+then
+rsync $FSOPTS ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/
 fi
 echo "klaar!!"
