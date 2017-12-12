@@ -58,7 +58,7 @@ echo "filestore/$DB herstellen?"
 read B
 if [ $B = "y" ]
 then
-echo "/usr/local/bin/rsync $FSOPTS ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/"
+echo "rsync $FSOPTS ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/"
 fi
 echo "GOED?"
 read C
