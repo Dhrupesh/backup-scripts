@@ -28,16 +28,16 @@ echo "Which Postgres Version?"
 read PG_VERSION
 echo "Which ssh-user has destination?"
 read SSH_USER
-# echo "Which Host is the Source?"
-# read TOINSTANCE
-echo "What is the full path of the filestore (not incuding "filestore" at the end)?"
+echo "Which location of filestore at source? \".filestore\" or \"data\"?"
+read FILESTORE
+echo "What is the full path in destination of the filestore (not incuding "filestore" at the end)?"
 read FILESTORE_PATH
 
 BACKUPPATH=$FROMHOST/$FROMINSTANCE
 DB_BACKUPPATH_IN=$CONTAINER_STORE/$BACKUPPATH/db/$PG_VERSION
 DB_BACKUPPATH_OUT=$NFS_MOUNT/$BACKUPPATH/db/$PG_VERSION
 
-FSOPTS="-a --delete --log-file=${NFS_MOUNT}/${BACKUPPATH}/log/rsync_restore.log ${NFS_MOUNT}/${BACKUPPATH}/root/.filestore/filestore/$DB"
+FSOPTS="-a --delete --log-file=${NFS_MOUNT}/${BACKUPPATH}/log/rsync_restore.log ${NFS_MOUNT}/${BACKUPPATH}/root/${FILESTORE}/filestore/$DB"
 
 echo "FROMHOST=$FROMHOST FROMINSTANCE=$FROMINSTANCE TOSERVER=$TOSERVER TOINSTANCE=$TOINSTANCE DB=$DB PG_PORT=$PG_PORT PG_VERSION=$PG_VERSION SSH_USER=$SSH_USER DB_BACKUPPATH_IN=$DB_BACKUPPATH_IN"
 echo "DB $DB verwijderen en backup terugzetten?(y/n)"
@@ -60,6 +60,6 @@ echo "GOED?"
 read C
 if [ $C = "y" ]
 then
-rsync $FSOPTS ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/
+rsync $FSOPTS -e "ssh -i ~/.ssh/kp002.pem" ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/
 fi
 echo "klaar!!"
