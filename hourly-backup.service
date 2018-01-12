@@ -4,7 +4,7 @@ Description=Run backup hourly
 [Service]
 WorkingDirectory=/opt/bin/backup/
 Type=simple
-ExecStart=/usr/bin/bash backup-from odoo-backup-hourly
+ExecStart=/usr/bin/bash backup-from.sh odoo-backup-hourly
 User=core
 
 [Install]
