@@ -1,0 +1,16 @@
+#cloud-config
+coreos:
+ units:
+    - name: rpc-statd.service
+      command: start
+      enable: true
+    - name: mnt-prod\x2dNSM.mount
+      command: start
+      content: |
+        [Mount]
+        What=172.128.0.36:/mnt/Array-1/Odoo-shares
+        Where=/mnt/prod-NSM
+        Type=nfs
+    - name: docker.service
+      command: start
+      enable: true

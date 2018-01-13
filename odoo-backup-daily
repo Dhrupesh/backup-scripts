@@ -1,5 +1,5 @@
 # magnus-test     10.147.18.33    /home/voodoo/magnus-test    core    5432    magnus-test                     9.6
-bdu-test        10.147.18.33    /home/voodoo/bdu-test       core    5432    BDU-Testomgeving,BDU-Roadshow,bdu-tasks,GenRep,uitprobeer,prom-test   9.6
+bdu-test        10.147.18.33    /home/voodoo/bdu-test       core    5432    BDU-Testomgeving,bdu-tasks,GenRep,finprot,misprot,bdu01   9.6
 # nsm-test-new    10.147.18.33    /home/voodoo/nsm-test       core    5434    nsm-demo,nsm-test               9.6
  .voodoo         10.147.18.33    /home/voodoo/.voodoo        core
 nsm-prod        10.147.18.135     /home/openerp               root    5432    NewSkoolMedia                   9.1

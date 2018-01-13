@@ -1,6 +1,7 @@
 #!/bin/env bash
 #
-#
+# backup script based on zerotier/zerotier-containerized:latest and the official
+# postgres docker images in the versions to be backupped and/or restored, currently 9.1, 9.3, 9.5 and 9.6
 #
 NFS_MOUNT=/mnt/prod-NSM
 CONTAINER_STORE=/mnt/store
