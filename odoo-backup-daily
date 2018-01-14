@@ -12,3 +12,5 @@ chocque         10.147.18.79    /home/voodoo/chocque        core    5432    choc
 # .voodoo         10.147.18.82    /home/voodoo/.voodoo        core
 # nsm-prod        10.147.18.    /home/voodoo/.voodoo        core    5432                                    9.6
 # odoo10.vd	    10.147.18.118	/Users/WH/odoo10	WH	5432	bdu-dev-demo,btwinfo,timeinvoice,BDU-Testomgeving	9.6
+bdu-accept      10.147.18.    /home/voodoo/bdu-accept       core    5432    bdu01   9.6
+ .voodoo         10.147.18.    /home/voodoo/.voodoo        core
