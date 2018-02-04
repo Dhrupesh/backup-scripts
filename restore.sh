@@ -60,6 +60,6 @@ echo "GOED?"
 read C
 if [ $C = "y" ]
 then
-sudo rsync $FSOPTS ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/
+sudo rsync $FSOPTS --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/
 fi
 echo "klaar!!"
