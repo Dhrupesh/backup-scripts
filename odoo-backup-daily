@@ -5,7 +5,8 @@ bdu-test        10.147.18.33    /home/voodoo/bdu-test       core    5432    bdu-
 nsm-prod        10.147.18.135     /home/openerp               root    5432    NewSkoolMedia                   9.1
 # megis-prod      10.131.1.22     /home/openerp               root    5432    megis01                         9.1
 # nsm-test        10.131.1.21     /home/openerp               root    5432    NewSkoolMedia                   9.3
-chocque         10.147.18.79    /home/voodoo/chocque        core    5432    chocque-test                         9.6
+chocque         10.147.18.79    /home/voodoo/chocque        core    5432    chocque-test,btwinfo              9.6
+btwinfo         10.147.18.79    /home/voodoo/btwinfo        core
 .voodoo         10.147.18.79    /home/voodoo/.voodoo        core
 # magnus-prod     10.147.18.43    /home/voodoo/.voodoo      core    5432                                    9.6
 # bdu-prod        10.147.18.82    /home/voodoo/bdu-prod      core    5432	  bdu01                            9.6
