@@ -40,7 +40,7 @@ then
         if [ ! -e "$DB_BACKUPPATH_OUT" ]; then
             mkdir -p "$DB_BACKUPPATH_OUT"
         fi
-        docker run -v $NFS_MOUNT:$CONTAINER_STORE --rm postgres:${PG_VERSION} pg_dump -b -FC -U postgres -h $HOST -p $PG_PORT -f $DB_BACKUPPATH_IN/$DB.dump $DB
+        docker run -v $NFS_MOUNT:$CONTAINER_STORE -v /etc/hosts:/etc/hosts:ro --rm postgres:${PG_VERSION} pg_dump -b -FC -U postgres -h $HOST -p $PG_PORT -f $DB_BACKUPPATH_IN/$DB.dump $DB
         check_exec_ok "db-dump $DB succesvol" "db-dump $DB NIET succesvol"
         done
 fi
