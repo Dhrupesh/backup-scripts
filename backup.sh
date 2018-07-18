@@ -28,7 +28,7 @@ function check_exec_ok {
         echo "$2"
         error_mail
     fi
-}
+} 
 
 echo "INSTANCE=$INSTANCE HOST=$HOST INST_PATH=$INST_PATH SSH_USER=$SSH_USER PG_PORT=$PG_PORT DBS=$DBS PG_VERSION=$PG_VERSION DB_BACKUPPATH_IN=$DB_BACKUPPATH_IN"
 
