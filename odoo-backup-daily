@@ -1,5 +1,6 @@
 # magnus-test     x   /home/voodoo/magnus-test    core    5432    magnus-test                     9.6
-bdu-test        bdu-test    /home/voodoo/bdu-test       core    5432    bdu-tasks,bdu01,bdu02   9.6
+bdu-test        bdu-test    /home/voodoo/bdu-test       core    5432    bdu-tasks,bdu01,bdu02,bdu03   9.6
+bdu-test      bdu-accept    /home/voodoo/bdu-accept       core    5432    bdu01   9.6
 # nsm-test-new    x    /home/voodoo/nsm-test       core    5434    nsm-demo,nsm-test               9.6
 .voodoo         bdu-test    /home/voodoo/.voodoo        core
 nsm-prod        nsm-prod     /home/openerp               root    5432    NewSkoolMedia                   9.1
@@ -15,5 +16,3 @@ ammer           multi-tenant01    /home/voodoo/ammer          core
 # .voodoo         bdu-prod    /home/voodoo/.voodoo        core
 # nsm-prod        nsm-prod    /home/voodoo/.voodoo        core    5432                                    9.6
 # odoo10.vd	    development   /Users/WH/odoo10	WH	5432	bdu-dev-demo,btwinfo,timeinvoice,BDU-Testomgeving	9.6
-bdu-accept      bdu-accept    /home/voodoo/bdu-accept       core    5432    bdu01   9.6
-.voodoo         bdu-accept    /home/voodoo/.voodoo        core
