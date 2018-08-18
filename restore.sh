@@ -44,9 +44,9 @@ echo "DB $DB verwijderen en backup terugzetten?(y/n)"
 read A
 if [ $A = "y" ]
 then
-docker run -v $NFS_MOUNT:$CONTAINER_STORE --rm postgres:${PG_VERSION} dropdb -U postgres -h $TOSERVER -p $PG_PORT $DB
+docker run -v $NFS_MOUNT:$CONTAINER_STORE -v /etc/hosts:/etc/hosts:ro --rm postgres:${PG_VERSION} dropdb -U postgres -h $TOSERVER -p $PG_PORT $DB
 echo "DB $DB verwijderd. $DB.dump wordt nu geïmporteerd"
-docker run -v $NFS_MOUNT:$CONTAINER_STORE --rm postgres:${PG_VERSION} pg_restore -U postgres -h $TOSERVER -p $PG_PORT -C -j 4 -d postgres ${DB_BACKUPPATH_IN}/$DB.dump
+docker run -v $NFS_MOUNT:$CONTAINER_STORE -v /etc/hosts:/etc/hosts:ro --rm postgres:${PG_VERSION} pg_restore -U postgres -h $TOSERVER -p $PG_PORT -C -j 4 -d postgres ${DB_BACKUPPATH_IN}/$DB.dump
 echo "$DB is hersteld"
 fi
 
@@ -54,7 +54,7 @@ echo "filestore/$DB herstellen?"
 read B
 if [ $B = "y" ]
 then
-echo "sudo rsync $FSOPTS --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/"
+echo "sudo rsync $FSOPTS --rsync-path=\"sudo rsync\" -e \"ssh -i ~/.ssh/kp002.pem\" ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/"
 fi
 echo "GOED?"
 read C
