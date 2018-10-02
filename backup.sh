@@ -34,11 +34,8 @@ echo "INSTANCE=$INSTANCE HOST=$HOST INST_PATH=$INST_PATH SSH_USER=$SSH_USER PG_P
 if ! [[ $PG_PORT = "" ]];
 then
     RESULT=$(docker run -v /etc/hosts:/etc/hosts:ro --rm postgres:${PG_VERSION} psql -U postgres -h $HOST -p $PG_PORT -t -c "SELECT datname FROM pg_database where datname not in ('template0', 'template1', 'postgres')")
-#    IFS=" "
-    echo $RESULT
     for DB in $RESULT
         do
-        echo $DB
         if [ ! -e "$DB_BACKUPPATH_OUT" ]; then
             mkdir -p "$DB_BACKUPPATH_OUT"
         fi
