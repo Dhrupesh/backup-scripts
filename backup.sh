@@ -10,7 +10,6 @@ HOST=$2
 INST_PATH=$3
 SSH_USER=$4
 PG_PORT=$5
-DBS=$6
 PG_VERSION=$7
 
 BACKUPPATH=$HOST/$INSTANCE
@@ -30,12 +29,13 @@ function check_exec_ok {
     fi
 } 
 
-echo "INSTANCE=$INSTANCE HOST=$HOST INST_PATH=$INST_PATH SSH_USER=$SSH_USER PG_PORT=$PG_PORT DBS=$DBS PG_VERSION=$PG_VERSION DB_BACKUPPATH_IN=$DB_BACKUPPATH_IN"
+echo "INSTANCE=$INSTANCE HOST=$HOST INST_PATH=$INST_PATH SSH_USER=$SSH_USER PG_PORT=$PG_PORT PG_VERSION=$PG_VERSION DB_BACKUPPATH_IN=$DB_BACKUPPATH_IN"
 
 if ! [[ $PG_PORT = "" ]];
 then
-    IFS=","
-    for DB in $DBS
+    RESULT=$(docker run -v /etc/hosts:/etc/hosts:ro --rm postgres:${PG_VERSION} psql -U postgres -h $HOST -p $PG_PORT -t -c "SELECT datname FROM pg_database where datname not in ('template0', 'template1', 'postgres')")
+    IFS=" "
+    for DB in $RESULT
         do
         if [ ! -e "$DB_BACKUPPATH_OUT" ]; then
             mkdir -p "$DB_BACKUPPATH_OUT"
