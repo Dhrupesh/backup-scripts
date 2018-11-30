@@ -1,17 +1,20 @@
 # instance      host              folder                      user    port      postgres version
 # ==============================================================================================================================================
-# magnus-test     x               /home/voodoo/magnus-test    core    5432      9.6
-bdu-test        bdu-test          /home/voodoo/bdu-test       core    5432      9.6
-bdu-accept      bdu-test          /home/voodoo/bdu-accept     core    15432     9.6
-.voodoo         bdu-test          /home/voodoo/.voodoo        core
+bdu-test        bdu-testaccept    /home/voodoo/bdu-test       core    5432      9.6
+bdu-accept      bdu-testaccept    /home/voodoo/bdu-accept     core    15432     9.6
+.voodoo         bdu-testaccept    /home/voodoo/.voodoo        core
 nsm-prod        nsm-prod-70       /home/openerp               root    5432      9.1
 chocque         multi-tenant01    /home/voodoo/chocque        core    5432      9.6
 btwinfo         multi-tenant01    /home/voodoo/btwinfo        core
 maran           multi-tenant01    /home/voodoo/maran          core
 ammer           multi-tenant01    /home/voodoo/ammer          core
 .voodoo         multi-tenant01    /home/voodoo/.voodoo        core
-magnus-test     magnus-prod       /home/voodoo/magnus-test    core    5432      9.6
+magnus-test     magnus-testaccept /home/voodoo/magnus-test    core    5432      9.6
+.voodoo         magnus-testaccept /home/voodoo/.voodoo        core
+magnus-prod     magnus-prod       /home/voodoo/magnus-prod    core    5432      9.6
 .voodoo         magnus-prod       /home/voodoo/.voodoo        core
-nsm-test        nsm-prod          /home/voodoo/nsm-test       core    5432      9.6
+nsm-test        nsm-testaccept    /home/voodoo/nsm-test       core    5432      9.6
+.voodoo         nsm-testaccept    /home/voodoo/.voodoo        core
+nsm-prod        nsm-prod          /home/voodoo/nsm-prod       core    5432      9.6
 .voodoo         nsm-prod          /home/voodoo/.voodoo        core
 # odoo10.vd	    development       /Users/WH/odoo10	          WH	  5432		9.6
