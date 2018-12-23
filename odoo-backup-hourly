@@ -1,16 +1,17 @@
-# instance          host                folder                      user    port    postgres version
+# instance          host                rootsync    folder                      user    port    postgres version
 # ==============================================================================================================================================
-# magnus-test       x                   /home/voodoo/magnus-test    core    5432    9.6
-# bdu-test          bdu-test            /home/voodoo/bdu-test       core    5432    9.6
-# nsm-test-new      x                   /home/voodoo/nsm-test       core    5434    9.6
-# .voodoo           bdu-test            /home/voodoo/.voodoo        core
-# nsm-prod          nsm-prod            /home/openerp               root    5432    9.1
-# megis-prod        magnus-prod         /home/openerp               root    5432    9.1
-# nsm-test          nsm-test            /home/openerp               root    5432    9.3
-# chocque           multi-tenant01      /home/voodoo/chocque        core    5432    9.6
-# .voodoo           multi-tenant01      /home/voodoo/.voodoo        core
-# magnus-prod       x                   /home/voodoo/.voodoo        core    5432    9.6
-bdu-prod            bdu-prod            /home/voodoo/bdu-prod       core    5432	9.6
-.voodoo             bdu-prod            /home/voodoo/.voodoo        core
-# nsm-prod          x                   /home/voodoo/.voodoo        core    5432    9.6
-# odoo10.vd	        ontwikkel	        /Users/WH/odoo10	        WH	    5432	9.6
+# magnus-test       x                   Y           /home/voodoo/magnus-test    core    5432    9.6
+# bdu-test          bdu-test            Y           /home/voodoo/bdu-test       core    5432    9.6
+# nsm-test-new      x                   Y           /home/voodoo/nsm-test       core    5434    9.6
+# .voodoo           bdu-test            Y           /home/voodoo/.voodoo        core
+# nsm-prod          nsm-prod            Y           /home/openerp               root    5432    9.1
+# megis-prod        magnus-prod         Y           /home/openerp               root    5432    9.1
+# nsm-test          nsm-test            Y           /home/openerp               root    5432    9.3
+# chocque           multi-tenant01      Y           /home/voodoo/chocque        core    5432    9.6
+# .voodoo           multi-tenant01      Y           /home/voodoo/.voodoo        core
+magnus-prod         magnus-prod         Y           /home/voodoo/magnus-prod    core    5432    9.6
+.voodoo             magnus-prod         Y           /home/voodoo/.voodoo        core
+bdu-prod            bdu-prod            Y           /home/voodoo/bdu-prod       core    5432	9.6
+.voodoo             bdu-prod            Y           /home/voodoo/.voodoo        core
+nsm-prod            nsm-prod            Y           /home/voodoo/nsm-prod       core    5432    9.6
+.voodoo             nsm-prod            Y           /home/voodoo/.voodoo        core

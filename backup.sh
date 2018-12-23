@@ -7,10 +7,11 @@ NFS_MOUNT=/mnt/prod-NSM
 CONTAINER_STORE=/mnt/store
 INSTANCE=$1
 HOST=$2
-INST_PATH=$3
-SSH_USER=$4
-PG_PORT=$5
-PG_VERSION=$6
+ROOTSYNC=$3
+INST_PATH=$4
+SSH_USER=$5
+PG_PORT=$6
+PG_VERSION=$7
 
 BACKUPPATH=$HOST/$INSTANCE
 DB_BACKUPPATH_IN=$CONTAINER_STORE/$BACKUPPATH/db/$PG_VERSION
@@ -43,23 +44,26 @@ then
         check_exec_ok "db-dump $DB succesvol" "db-dump $DB NIET succesvol"
         done
 fi
-echo "Start synchronisatie van instance root"
-if [ ! -e "$NFS_MOUNT/$BACKUPPATH/log" ]; then
-    mkdir -p "$NFS_MOUNT/$BACKUPPATH/log"
-    touch "$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log"
-fi
-if [ ! -e "$NFS_MOUNT/$HOST/log" ]; then
-    mkdir -p "$NFS_MOUNT/$HOST/log"
-    touch $NFS_MOUNT/$HOST/log/rsync_client.log
-fi
-if [ ! -e "$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log" ]; then
-    touch "$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log"
-fi
-if [ ! -e "$NFS_MOUNT/$HOST/log/rsync_client.log" ]; then
-    touch $NFS_MOUNT/$HOST/log/rsync_client.log
-fi
+if [[ $ROOTSYNC = "Y" ]];
+then
+    echo "Start synchronisatie van instance root"
+    if [ ! -e "$NFS_MOUNT/$BACKUPPATH/log" ]; then
+        mkdir -p "$NFS_MOUNT/$BACKUPPATH/log"
+        touch "$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log"
+    fi
+    if [ ! -e "$NFS_MOUNT/$HOST/log" ]; then
+        mkdir -p "$NFS_MOUNT/$HOST/log"
+        touch $NFS_MOUNT/$HOST/log/rsync_client.log
+    fi
+    if [ ! -e "$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log" ]; then
+        touch "$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log"
+    fi
+    if [ ! -e "$NFS_MOUNT/$HOST/log/rsync_client.log" ]; then
+        touch $NFS_MOUNT/$HOST/log/rsync_client.log
+    fi
 
 
-sudo rsync -az --delete --copy-unsafe-links --log-file=$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" $SSH_USER@$HOST:$INST_PATH/ $NFS_MOUNT/$HOST/$INSTANCE/root/
-check_exec_ok "root van $HOST, $INSTANCE gesynchroniseerd" "root van $HOST, $INSTANCE NIET gesynchroniseerd"
+    sudo rsync -az --delete --copy-unsafe-links --log-file=$NFS_MOUNT/$BACKUPPATH/log/rsync_client.log --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" $SSH_USER@$HOST:$INST_PATH/ $NFS_MOUNT/$HOST/$INSTANCE/root/
+    check_exec_ok "root van $HOST, $INSTANCE gesynchroniseerd" "root van $HOST, $INSTANCE NIET gesynchroniseerd"
+fi
 echo "backup-job klaar!"
