@@ -1,5 +1,5 @@
 [Unit]
-Description=Run backup daily
+Description=Run backup hourly
 
 [Service]
 WorkingDirectory=/opt/bin/backup/
