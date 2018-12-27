@@ -11,7 +11,8 @@
 # .voodoo           multi-tenant01      Y           /home/voodoo/.voodoo        core
 magnus-prod         magnus-prod         Y           /home/voodoo/magnus-prod    core    5432    9.6
 .voodoo             magnus-prod         Y           /home/voodoo/.voodoo        core
-bdu-prod            bdu-prod            Y           /home/voodoo/bdu-prod       core    5432	9.6
+bdu-prod            bm-db               N           xx                          beheer  15432   9.6
+bdu-prod            bdu-prod            Y           /home/voodoo/bdu-prod       core
 .voodoo             bdu-prod            Y           /home/voodoo/.voodoo        core
 nsm-prod            nsm-prod            Y           /home/voodoo/nsm-prod       core    5432    9.6
 .voodoo             nsm-prod            Y           /home/voodoo/.voodoo        core

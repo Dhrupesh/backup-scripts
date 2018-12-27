@@ -2,7 +2,7 @@
 # ==============================================================================================================================================
 bdu-test        bdu-testaccept       Y          /home/voodoo/bdu-test       core    5432      9.6
 bdu-accept      bdu-testaccept       Y          /home/voodoo/bdu-accept     core
-bdu-accept      bm-db-1              N          /home/voodoo/bdu-accept     core    5432      9.6
+bdu-accept      bm-db                N          /home/voodoo/bdu-accept     core    5432      9.6
 .voodoo         bdu-testaccept       Y          /home/voodoo/.voodoo        core
 nsm-prod        nsm-prod-70          Y          /home/openerp               root    5432      9.1
 chocque         multi-tenant01       Y          /home/voodoo/chocque        core    5432      9.6
@@ -12,10 +12,10 @@ ammer           multi-tenant01       Y          /home/voodoo/ammer          core
 .voodoo         multi-tenant01       Y          /home/voodoo/.voodoo        core
 magnus-test     magnus-testaccept    Y          /home/voodoo/magnus-test    core    5432      9.6
 .voodoo         magnus-testaccept    Y          /home/voodoo/.voodoo        core
-#magnus-prod     magnus-prod          Y          /home/voodoo/magnus-prod    core    5432      9.6
-#.voodoo         magnus-prod          Y          /home/voodoo/.voodoo        core
+# magnus-prod     magnus-prod          Y          /home/voodoo/magnus-prod    core    5432      9.6
+# .voodoo         magnus-prod          Y          /home/voodoo/.voodoo        core
 nsm-test        nsm-testaccept       Y          /home/voodoo/nsm-test       core    5432      9.6
 .voodoo         nsm-testaccept       Y          /home/voodoo/.voodoo        core
-nsm-prod        nsm-prod             Y          /home/voodoo/nsm-prod       core    5432      9.6
-.voodoo         nsm-prod             Y          /home/voodoo/.voodoo        core
+# nsm-prod        nsm-prod             Y          /home/voodoo/nsm-prod       core    5432      9.6
+# .voodoo         nsm-prod             Y          /home/voodoo/.voodoo        core
 # odoo10.vd	    development          Y          /Users/WH/odoo10	        WH	    5432      9.6
