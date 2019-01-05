@@ -19,3 +19,7 @@ nsm-test        nsm-testaccept       Y          /home/voodoo/nsm-test       core
 # nsm-prod        nsm-prod             Y          /home/voodoo/nsm-prod       core    5432      9.6
 # .voodoo         nsm-prod             Y          /home/voodoo/.voodoo        core
 # odoo10.vd	    development          Y          /Users/WH/odoo10	        WH	    5432      9.6
+misset-test     misset-testaccept    Y          /home/voodoo/misset-test    core    5432      9.6
+.voodoo         misset-testaccept    Y          /home/voodoo/.voodoo        core
+misset-prod     misset-prod          Y          /home/voodoo/misset-prod    core    5432      9.6
+.voodoo         misset-prod          Y          /home/voodoo/.voodoo        core
