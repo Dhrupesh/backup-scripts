@@ -32,13 +32,20 @@ echo "Which location of filestore at source? \".filestore\" or \"data\"?"
 read FILESTORE
 echo "What is the full path in destination of the filestore (not incuding "filestore" at the end)?"
 read FILESTORE_PATH
+echo "With key? (y/n)"
+read KEY
 
 BACKUPPATH=$FROMHOST/$FROMINSTANCE
 DB_BACKUPPATH_IN=$CONTAINER_STORE/$BACKUPPATH/db/$PG_VERSION
 DB_BACKUPPATH_OUT=$NFS_MOUNT/$BACKUPPATH/db/$PG_VERSION
 
 FSOPTS="-a --delete --log-file=${NFS_MOUNT}/${BACKUPPATH}/log/rsync_restore.log ${NFS_MOUNT}/${BACKUPPATH}/root/${FILESTORE}/filestore/$DB"
-
+if [ $KEY = "y" ]
+ then
+ RSYNC_PATH="--rsync-path=\"sudo rsync\" -e \"ssh -i ~/.ssh/kp002.pem\""
+else
+ RSYNC_PATH=""
+fi
 echo "FROMHOST=$FROMHOST FROMINSTANCE=$FROMINSTANCE TOSERVER=$TOSERVER TOINSTANCE=$TOINSTANCE DB=$DB PG_PORT=$PG_PORT PG_VERSION=$PG_VERSION SSH_USER=$SSH_USER DB_BACKUPPATH_IN=$DB_BACKUPPATH_IN"
 echo "DB $DB verwijderen en backup terugzetten?(y/n)"
 read A
@@ -53,13 +60,14 @@ fi
 echo "filestore/$DB herstellen?"
 read B
 if [ $B = "y" ]
-then
-echo "sudo rsync $FSOPTS --rsync-path=\"sudo rsync\" -e \"ssh -i ~/.ssh/kp002.pem\" ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/"
+ then
+ echo "sudo rsync $FSOPTS $RSYNC_PATH ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/"
+fi
 fi
 echo "GOED?"
 read C
 if [ $C = "y" ]
 then
-sudo rsync $FSOPTS --rsync-path="sudo rsync" -e "ssh -i ~/.ssh/kp002.pem" ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/
+sudo rsync $FSOPTS $RSYNC_PATH ${SSH_USER}@${TOSERVER}:${FILESTORE_PATH}/filestore/
 fi
 echo "klaar!!"
